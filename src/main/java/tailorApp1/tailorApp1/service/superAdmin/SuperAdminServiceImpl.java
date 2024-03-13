@@ -1,5 +1,6 @@
 package tailorApp1.tailorApp1.service.superAdmin;
 
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import tailorApp1.tailorApp1.Entity.RoleEntity;
@@ -9,6 +10,7 @@ import tailorApp1.tailorApp1.bo.tailor.CreateTailorRequest;
 import tailorApp1.tailorApp1.repository.RoleRepository;
 import tailorApp1.tailorApp1.repository.TailorRepository;
 import tailorApp1.tailorApp1.repository.UserRepository;
+import tailorApp1.tailorApp1.service.auth.UserDetailUtil;
 import tailorApp1.tailorApp1.util.Roles;
 
 import javax.transaction.Transactional;
@@ -44,28 +46,27 @@ public class SuperAdminServiceImpl implements SuperAdminService{
     @Override
     @Transactional
     public void addTailor(CreateTailorRequest createTailorRequest) {
-        RoleEntity roleEntity= roleRepository.findRoleEntityByTitle(Roles.super_admin.name())
-                .orElseThrow();
-        UserEntity userEntity=new UserEntity();
-        userEntity.setUsername(createTailorRequest.getUsername());
-        userEntity.setEmail(createTailorRequest.getUsername());
-        userEntity.setRoles(roleEntity);
-        userEntity.setPassword(bCryptPasswordEncoder.encode(createTailorRequest.getPassword()));
+System.out.println(createTailorRequest.getTailorName());
+System.out.println(createTailorRequest.getConsultation());
+System.out.println(createTailorRequest.getGender());
+System.out.println(createTailorRequest.getTailorName());
+//System.out.println(createTailorRequest.getAddress());
+System.out.println(createTailorRequest.getDurationTime());
+System.out.println(createTailorRequest.getAboutus());
+System.out.println(createTailorRequest.getUsername());
+
         TailorEntity tailor = new TailorEntity();
         tailor.setTailorName(createTailorRequest.getTailorName());
         tailor.setConsultation(createTailorRequest.getConsultation());
-        tailor.setLocation(createTailorRequest.getLocation());
+      //  tailor.setAddress(createTailorRequest.getAddress());
         tailor.setDurationTime(createTailorRequest.getDurationTime());
         tailor.setGender(createTailorRequest.getGender());
         tailor.setImage(createTailorRequest.getImage());
         tailor.setAboutUs(createTailorRequest.getAboutus());
         tailor.setNumber(createTailorRequest.getNumber());
-        tailor.setUserEntity(userEntity);
 
         tailorRepository.save(tailor);
-        userRepository.save(userEntity);
 
     }
-
 
 }

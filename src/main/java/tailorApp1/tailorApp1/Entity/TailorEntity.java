@@ -18,25 +18,22 @@ public class TailorEntity {
     private String tailorName;
     @Column(name = "consultation", nullable = false)
     private String consultation;
-    @Column(name = "location", nullable = false)
-    private String location;
+//    @Column(name = "address", nullable = false)
+//    private String address;
     @Column(name = "image", nullable = false)
     private String image;
     @Column(name = "gender", nullable = false)
     private String gender;
-    @Column(name = "number",nullable = false)
+    @Column(name = "number", nullable = false)
     private String number;
-    @Column(name = "aboutUs",nullable = false)
+    @Column(name = "aboutUs", nullable = false)
     private String aboutUs;
-   @Column(name = "durationTime",nullable = false)
+    @Column(name = "durationTime", nullable = false)
     private String durationTime;
 
     @ManyToOne
     @JoinColumn(name = "clothingTypeid")
     private ClothingTypeEntity clothingTypeEntity;
-
-    @OneToOne(cascade = CascadeType.ALL)
-    private UserEntity userEntity;
 
 
     public Long getTailorId() {
@@ -63,13 +60,13 @@ public class TailorEntity {
         this.consultation = consultation;
     }
 
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
+//    public String getAddress() {
+//        return address;
+//    }
+//
+//    public void setAddress(String address) {
+//        this.address = address;
+//    }
 
     public String getImage() {
         return image;
@@ -112,13 +109,4 @@ public class TailorEntity {
     }
 
 
-
-
-    public UserEntity getUserEntity() {
-        return userEntity;
-    }
-
-    public void setUserEntity(UserEntity userEntity) {
-        this.userEntity = userEntity;
-    }
 }

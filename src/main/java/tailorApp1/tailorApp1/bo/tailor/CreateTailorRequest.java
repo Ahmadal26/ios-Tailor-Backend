@@ -3,7 +3,7 @@ package tailorApp1.tailorApp1.bo.tailor;
 public class CreateTailorRequest {
     private String tailorName;
     private String consultation;
-    private String location;
+//    private String address;
     private String durationTime;
     private String gender;
     private String image;
@@ -44,13 +44,13 @@ public class CreateTailorRequest {
         this.consultation = consultation;
     }
 
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
+//    public String getAddress() {
+//        return address;
+//    }
+//
+//    public void setAddress(String Address) {
+//        this.address = address;
+//    }
 
     public String getDurationTime() {
         return durationTime;
